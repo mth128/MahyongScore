@@ -26,13 +26,16 @@ namespace Mahyong
 
     public AddRoundPage(int modifyIndex = -1)
     {
-      Index = modifyIndex; 
       InitializeComponent();
 
+      Index = modifyIndex;
       MainStackLayout.Children.Add(Grid);
 
       for (int i = 0; i < 4; i++)
         Grid.ColumnDefinitions.Add(new ColumnDefinition());
+
+      Grid.Padding = 0;
+      Grid.Margin = 0;
 
       Grid.Children.Add(Mahyong.PlayerLabel(PlayerIndex.player1), 0, 0);
       Grid.Children.Add(Mahyong.PlayerLabel(PlayerIndex.player2), 1, 0);
@@ -96,11 +99,11 @@ namespace Mahyong
       if (Index >= 0 && Index < Mahyong.Rounds.Count)
         Mahyong.Rounds[Index] = round;
       else 
-        Mahyong.Rounds.Add(round); 
-
+        Mahyong.Rounds.Add(round);
       MessagingCenter.Send(this, "Refresh");
       await Navigation.PopModalAsync();
     }
+
     private async void Cancel_Clicked(object sender, EventArgs e)
     {
       await Navigation.PopModalAsync();

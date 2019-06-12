@@ -6,12 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Mahyong
 {
   // Learn more about making custom code visible in the Xamarin.Forms previewer
   // by visiting https://aka.ms/xamarinforms-previewer
-  [DesignTimeVisible(false)]
+  [XamlCompilation(XamlCompilationOptions.Compile)]
   public partial class MainPage : ContentPage
   {
     Mahyong Mahyong => Mahyong.Main;
@@ -32,7 +33,7 @@ namespace Mahyong
       BuildLayout();
 
       MessagingCenter.Subscribe<SetPlayerNamesPage>(this, "ChangeNames", (obj) => { ChangeNames(); });
-      MessagingCenter.Subscribe<SetPlayerNamesPage>(this, "Refresh", (obj) => { BuildLayout(); });
+      MessagingCenter.Subscribe<AddRoundPage>(this, "Refresh", (obj) => { ChangeNames(); });
     }
 
     private void BuildLayout()
@@ -77,6 +78,7 @@ namespace Mahyong
       player2Label.Text = Mahyong.Main.Player2;
       player3Label.Text = Mahyong.Main.Player3;
       player4Label.Text = Mahyong.Main.Player4;
+      BuildLayout(); 
     }
 
     private async Task StartSetPlayerNamesPageAsync()
@@ -96,7 +98,7 @@ namespace Mahyong
 
     private async Task StartAddRoundPageAsync()
     {
-      await Navigation.PushModalAsync(new NavigationPage(new AddRoundPage()));
+      await Navigation.PushModalAsync(new NavigationPage(new AddRoundPage()));      
     }
   }
 }

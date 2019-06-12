@@ -78,8 +78,8 @@ namespace Mahyong
 
     private async void OK_Clicked(object sender, EventArgs e)
     {
+      await Navigation.PopModalAsync();
       MessagingCenter.Send(this, "ChangeNames");
-      await Navigation.PopModalAsync(); 
     }
   }
 }

@@ -6,9 +6,14 @@
              mc:Ignorable="d"
              x:Class="Mahyong.MainPage">
 
-  <StackLayout x:Name="MainStackLayout">
-    <Button Text ="Set Player Names" Clicked="SetPlayerNames" />
-    <Button Text ="Add Round" Clicked="AddRound" />
-  </StackLayout>
-
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Names" Clicked="SetPlayerNames" />
+    <ToolbarItem Text="Round" Clicked="AddRound" />
+  </ContentPage.ToolbarItems>
+  
+  <ContentPage.Content>
+    <StackLayout x:Name="MainStackLayout">
+    </StackLayout>
+  </ContentPage.Content>
+  
 </ContentPage>
